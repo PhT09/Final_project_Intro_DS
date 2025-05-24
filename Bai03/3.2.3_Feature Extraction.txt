@@ -1,0 +1,28 @@
+I). Đề xuất phương pháp trích xuất đặc trưng:
+Vì dữ liệu gồm các câu nói của người nổi tiếng (văn bản), nên đây là bài toán xử lý ngôn ngữ tự nhiên (NLP). Do đó, phương pháp trích xuất đặc trưng hiệu quả là sử dụng TF-IDF kết hợp N-grams để chuyển văn bản thành dạng số có thể đưa vào mô hình học máy.
+
+II). Chi tiết cách thực hiện:
+Bước 1 – Tiền xử lý văn bản:
+    + Chuyển văn bản thành chữ thường (lowercase).
+
+    + Loại bỏ dấu câu, ký tự đặc biệt.
+
+    + Bỏ các từ không mang nhiều thông tin (stopwords).
+
+    => (Tùy chọn) chuẩn hóa: bỏ dấu tiếng Việt, lemmatization nếu có.
+
+Bước 2 – Biến đổi văn bản thành vector đặc trưng:
+    + Sử dụng TfidfVectorizer từ thư viện scikit-learn.
+
+    + Kết hợp n-grams để lấy ngữ cảnh tốt hơn:
+
+        ngram_range=(1,2) giúp lấy cả từ đơn (unigram) và cặp từ (bigram).
+
+    + Mỗi câu nói sẽ được chuyển thành 1 vector đặc trưng có độ dài cố định.
+
+III). Lý do chọn TF-IDF + N-gram:
+    + TF-IDF giúp đo độ quan trọng của từ trong một câu nói so với toàn bộ tập dữ liệu.
+
+    + N-grams giúp nắm bắt thông tin ngữ cảnh (ví dụ: cụm từ "make sense" mang ý nghĩa riêng).
+
+    + Đây là phương pháp phổ biến, đơn giản, hiệu quả cao với các mô hình phân loại văn bản như Naive Bayes, Logistic Regression,...
